@@ -264,19 +264,17 @@ function home() {
         Your overall: {(Math.round(totalScore * 10) / 10).toFixed(1)}
       </h2>
       <div>
-        <button
-          style={{
-            fontSize: "x-large",
-            backgroundColor: "white",
-            marginRight: "1rem",
-          }}
-          onClick={() => {
-            myScore = new score(0, 0, 0, 0);
-          }}>
-          <Link to="/test" style={{ color: "#333" }}>
+        <Link to="/test">
+          <button
+            style={{
+              fontSize: "x-large",
+            }}
+            onClick={() => {
+              myScore = new score(0, 0, 0, 0);
+            }}>
             I haven't taken the test (Test now)
-          </Link>
-        </button>
+          </button>{" "}
+        </Link>
         <button
           className="submit"
           style={{ fontSize: "x-large" }}
@@ -297,16 +295,12 @@ function home() {
           <h2 style={{ paddingBottom: "1rem", fontSize: "xx-large" }}>
             Do you want to try our mock test?
           </h2>
-          <button style={{ marginRight: "0.3rem" }}>
-            <Link style={{ color: "black" }} to="/home">
-              No
-            </Link>
-          </button>
-          <button style={{ marginLeft: "0.3rem" }} className="submit">
-            <Link style={{ color: "white" }} to="/test">
-              Yes
-            </Link>
-          </button>
+          <Link to="/home">
+            <button style={{ marginRight: "0.5rem" }}>No</button>{" "}
+          </Link>{" "}
+          <Link to="/test">
+            <button className="submit">Yes</button>
+          </Link>
         </div>
       </div>
     </div>
