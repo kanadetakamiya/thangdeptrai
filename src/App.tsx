@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Router, Route, Link } from "wouter";
 import "./App.css";
+
 function Home() {
   const [lisScore, setLisScore] = useState(6.5);
   const [readScore, setReadScore] = useState(6.5);
@@ -79,32 +80,98 @@ function Home() {
       <div className="score">
         <div>
           <h2 style={{ fontSize: "xx-large" }}>Listening</h2>
-          <h1>{lisScore}</h1>
-          <button onClick={() => adjust(skills.LIS, signs.MINUS)}>-</button>
-          <button onClick={() => adjust(skills.LIS, signs.PLUS)}>+</button>
+          <h1>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.LIS, signs.MINUS)}>
+              -
+            </button>
+            <span
+              style={{
+                verticalAlign: "middle",
+                margin: "1.5rem",
+              }}>
+              {(Math.round(lisScore * 10) / 10).toFixed(1)}
+            </span>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.LIS, signs.PLUS)}>
+              +
+            </button>
+          </h1>
         </div>
         <div>
           <h2 style={{ fontSize: "xx-large" }}>Reading</h2>
-          <h1>{readScore}</h1>
-          <button onClick={() => adjust(skills.READ, signs.MINUS)}>-</button>
-          <button onClick={() => adjust(skills.READ, signs.PLUS)}>+</button>
+          <h1>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.READ, signs.MINUS)}>
+              -
+            </button>
+            <span
+              style={{
+                verticalAlign: "middle",
+                margin: "1.5rem",
+              }}>
+              {(Math.round(readScore * 10) / 10).toFixed(1)}
+            </span>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.READ, signs.PLUS)}>
+              +
+            </button>
+          </h1>
         </div>
       </div>
       <div className="score">
         <div>
           <h2 style={{ fontSize: "xx-large" }}>Writing</h2>
-          <h1>{writeScore}</h1>
-          <button onClick={() => adjust(skills.WRITE, signs.MINUS)}>-</button>
-          <button onClick={() => adjust(skills.WRITE, signs.PLUS)}>+</button>
+          <h1>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.WRITE, signs.MINUS)}>
+              -
+            </button>
+            <span
+              style={{
+                verticalAlign: "middle",
+                margin: "1.5rem",
+              }}>
+              {(Math.round(writeScore * 10) / 10).toFixed(1)}
+            </span>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.WRITE, signs.PLUS)}>
+              +
+            </button>
+          </h1>
         </div>
         <div>
           <h2 style={{ fontSize: "xx-large" }}>Speaking</h2>
-          <h1>{speakScore}</h1>
-          <button onClick={() => adjust(skills.SPEAK, signs.MINUS)}>-</button>
-          <button onClick={() => adjust(skills.SPEAK, signs.PLUS)}>+</button>
+          <h1>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.SPEAK, signs.MINUS)}>
+              -
+            </button>
+            <span
+              style={{
+                verticalAlign: "middle",
+                margin: "1.5rem",
+              }}>
+              {(Math.round(speakScore * 10) / 10).toFixed(1)}
+            </span>
+            <button
+              style={{ verticalAlign: "middle" }}
+              onClick={() => adjust(skills.SPEAK, signs.PLUS)}>
+              +
+            </button>
+          </h1>
         </div>
       </div>
-      <h2 style={{ fontSize: "xx-large" }}>Your overall: {totalScore}</h2>
+      <h2 style={{ fontSize: "xx-large" }}>
+        Your overall: {(Math.round(totalScore * 10) / 10).toFixed(1)}
+      </h2>
       <button className="submit">
         <Link to="/about">Submit</Link>
       </button>
