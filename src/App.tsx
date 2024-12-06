@@ -72,6 +72,25 @@ function Home() {
       Math.round((lisScore + readScore + writeScore + speakScore) / 2) / 2
     );
   }
+  function slide(skill: skills, value: number) {
+    switch (skill) {
+      case skills.LIS:
+        setLisScore(value);
+        break;
+      case skills.READ:
+        setReadScore(value);
+        break;
+      case skills.WRITE:
+        setWriteScore(value);
+        break;
+      case skills.SPEAK:
+        setSpeakScore(value);
+        break;
+    }
+    setTotalScore(
+      Math.round((lisScore + readScore + writeScore + speakScore) / 2) / 2
+    );
+  }
   return (
     <div>
       <h1 style={{ fontSize: "xxx-large", padding: "1rem" }}>
@@ -99,6 +118,16 @@ function Home() {
               +
             </button>
           </h1>
+          <input
+            type="range"
+            className="slider"
+            min="1"
+            max="9"
+            step="0.5"
+            value={lisScore}
+            onInput={(e) =>
+              slide(skills.LIS, parseFloat(e.currentTarget.value))
+            }></input>
         </div>
         <div>
           <h2 style={{ fontSize: "xx-large" }}>Reading</h2>
@@ -121,6 +150,16 @@ function Home() {
               +
             </button>
           </h1>
+          <input
+            type="range"
+            className="slider"
+            min="1"
+            max="9"
+            step="0.5"
+            value={readScore}
+            onInput={(e) =>
+              slide(skills.READ, parseFloat(e.currentTarget.value))
+            }></input>
         </div>
       </div>
       <div className="score">
@@ -145,6 +184,16 @@ function Home() {
               +
             </button>
           </h1>
+          <input
+            type="range"
+            className="slider"
+            min="1"
+            max="9"
+            step="0.5"
+            value={writeScore}
+            onInput={(e) =>
+              slide(skills.WRITE, parseFloat(e.currentTarget.value))
+            }></input>
         </div>
         <div>
           <h2 style={{ fontSize: "xx-large" }}>Speaking</h2>
@@ -167,6 +216,16 @@ function Home() {
               +
             </button>
           </h1>
+          <input
+            type="range"
+            className="slider"
+            min="1"
+            max="9"
+            step="0.5"
+            value={speakScore}
+            onInput={(e) =>
+              slide(skills.SPEAK, parseFloat(e.currentTarget.value))
+            }></input>
         </div>
       </div>
       <h2 style={{ fontSize: "xx-large" }}>
