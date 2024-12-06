@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Router, Route, Link } from "wouter";
 import "./App.css";
 
-function Home() {
+function home() {
   const [lisScore, setLisScore] = useState(6.5);
   const [readScore, setReadScore] = useState(6.5);
   const [writeScore, setWriteScore] = useState(6.5);
@@ -231,14 +231,36 @@ function Home() {
       <h2 style={{ fontSize: "xx-large" }}>
         Your overall: {(Math.round(totalScore * 10) / 10).toFixed(1)}
       </h2>
-      <button className="submit">
-        <Link to="/about">Submit</Link>
-      </button>
+      <div>
+        <button
+          style={{
+            fontSize: "larger",
+            backgroundColor: "white",
+            cursor: "pointer",
+          }}
+          onClick={() => {}}>
+          <Link to="/test" style={{ color: "#333" }}>
+            I haven't taken the test (Test now)
+          </Link>
+        </button>
+        <button className="submit" style={{ cursor: "pointer" }}>
+          <Link to="/home">Submit</Link>
+        </button>
+      </div>
     </div>
   );
 }
 
-function About() {
+function test() {
+  console.log();
+  return (
+    <div>
+      <h1>Test</h1>
+    </div>
+  );
+}
+
+function placeHolder() {
   return (
     <div>
       <h1>Home</h1>
@@ -248,8 +270,9 @@ function About() {
 function App() {
   return (
     <Router>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route path="/" component={home} />
+      <Route path="/test" component={test} />
+      <Route path="/home" component={placeHolder} />
     </Router>
   );
 }
