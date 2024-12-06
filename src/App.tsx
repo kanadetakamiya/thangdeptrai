@@ -2,6 +2,38 @@ import { useState } from "react";
 import { Router, Route, Link } from "wouter";
 import "./App.css";
 
+class score {
+  private lis: number;
+  private read: number;
+  private write: number;
+  private speak: number;
+  private total: number;
+  constructor(lis: number, read: number, write: number, speak: number) {
+    this.lis = lis;
+    this.read = read;
+    this.write = write;
+    this.speak = speak;
+    this.total = Math.round((lis + read + write + speak) / 2) / 2;
+  }
+  getLis() {
+    return this.lis;
+  }
+  getRead() {
+    return this.read;
+  }
+  getWrite() {
+    return this.write;
+  }
+  getSpeak() {
+    return this.speak;
+  }
+  getTotal() {
+    return this.total;
+  }
+}
+
+let myScore: score;
+
 function home() {
   const [lisScore, setLisScore] = useState(6.5);
   const [readScore, setReadScore] = useState(6.5);
@@ -234,25 +266,54 @@ function home() {
       <div>
         <button
           style={{
-            fontSize: "larger",
+            fontSize: "x-large",
             backgroundColor: "white",
-            cursor: "pointer",
+            marginRight: "1rem",
           }}
-          onClick={() => {}}>
+          onClick={() => {
+            myScore = new score(0, 0, 0, 0);
+          }}>
           <Link to="/test" style={{ color: "#333" }}>
             I haven't taken the test (Test now)
           </Link>
         </button>
-        <button className="submit" style={{ cursor: "pointer" }}>
-          <Link to="/home">Submit</Link>
+        <button
+          className="submit"
+          style={{ fontSize: "x-large" }}
+          onClick={() => {
+            document.getElementById("popup")!.style.display = "flex";
+            myScore = new score(lisScore, readScore, writeScore, speakScore);
+          }}>
+          Submit
         </button>
+      </div>
+      <div className="popup" id="popup">
+        <div
+          style={{
+            backgroundColor: "white",
+            padding: "2rem",
+            borderRadius: "1rem",
+          }}>
+          <h2 style={{ paddingBottom: "1rem", fontSize: "xx-large" }}>
+            Do you want to try our mock test?
+          </h2>
+          <button style={{ marginRight: "0.3rem" }}>
+            <Link style={{ color: "black" }} to="/home">
+              No
+            </Link>
+          </button>
+          <button style={{ marginLeft: "0.3rem" }} className="submit">
+            <Link style={{ color: "white" }} to="/test">
+              Yes
+            </Link>
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 function test() {
-  console.log();
   return (
     <div>
       <h1>Test</h1>

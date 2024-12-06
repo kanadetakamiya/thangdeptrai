@@ -15,7 +15,8 @@ button {
 }
 
 .submit {
-  font-size: x-large;
+  background-color: cornflowerblue;
+  color: white;
 }
 
 .slider {
@@ -26,8 +27,8 @@ button {
   background: rgb(224, 224, 244);
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -46,4 +47,16 @@ button {
   border-radius: 50%;
   background: rgb(1, 1, 61);
   cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
 }
