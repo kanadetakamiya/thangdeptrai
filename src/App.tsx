@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Router, Route, Link } from "wouter";
+import { OpenAI } from "openai";
 import "./App.css";
 
 class score {
