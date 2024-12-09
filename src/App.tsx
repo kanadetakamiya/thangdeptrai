@@ -269,6 +269,7 @@ function home() {
           <button
             style={{
               fontSize: "x-large",
+              marginRight: "0.5rem",
             }}
             onClick={() => {
               myScore = new score(0, 0, 0, 0);
@@ -278,7 +279,7 @@ function home() {
         </Link>
         <button
           className="submit"
-          style={{ fontSize: "x-large" }}
+          style={{ fontSize: "x-large", marginLeft: "0.5rem" }}
           onClick={() => {
             document.getElementById("popup")!.style.display = "flex";
             myScore = new score(lisScore, readScore, writeScore, speakScore);
