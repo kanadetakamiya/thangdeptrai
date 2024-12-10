@@ -288,8 +288,6 @@ function saveScore(
   score[skills.WRITE] = writeScore;
   score[skills.SPEAK] = speakScore;
   score[skills.TOTAL] = totalScore;
-  console.log(score);
-  localStorage.setItem("score.json", JSON.stringify(score));
 }
 
 export default onboard;
