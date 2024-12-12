@@ -2,7 +2,7 @@ import { Router, Route } from "wouter";
 import onboard from "./Onboard";
 import test from "./Test";
 
-import "./App.css";
+import "./Layout/App.css";
 
 function home() {
   return (

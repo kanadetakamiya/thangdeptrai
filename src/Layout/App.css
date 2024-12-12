@@ -9,6 +9,25 @@
 button {
   font-size: large;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+}
+
+input {
+  font-size: xx-large;
+}
+
+input[type="radio"] {
+  transform: scale(1.5);
+}
+
+label {
+  font-size: xx-large;
+  margin-left: 1rem;
+}
+
 .score {
   display: flex;
 }
@@ -61,4 +80,26 @@ button {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(3px);
+}
+
+.mainAnsText {
+  width: max-content;
+  width: 3rem;
+}
+
+.mainAnsRadio {
+  width: auto;
+  height: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.mainDisplay {
+  display: block;
+}
+
+.show {
+  display: inline-block;
 }

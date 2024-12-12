@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import score from "./classes/score";
-import skills from "./classes/skills";
+import score from "./Class/score";
+import skills from "./Class/skills";
 
-import "./App.css";
+import "./Layout/App.css";
 
 export function onboard() {
   const [lisScore, setLisScore] = useState(6.5);
