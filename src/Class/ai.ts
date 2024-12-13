@@ -13,7 +13,7 @@ Also check if the learner possesses higher (highest 9.0) or lower (lowest 1.0) l
 Before giving any question, generate some thoughts on what needs to be asked.
 After 10 questions and answers, generate an assessment on the corrected estimation of the score and some notes about weaknesses and strengths of the learner.
 
-Ask questions that can be answered using a word or 1-2 sentences, and limit the answer to be within this range.
+Ask questions that can be answered using a word or 1-2 sentences, and the learner's answers must be within this range. You should clarify this condition to the learner. An answer that is not within this range should be considered as a poor performance in abstracting ideas.
 There will be 7 multiple-choice questions and 3 open-ended questions. 
 The multiple-choice questions should have 4 options but only 1 answer.
 
