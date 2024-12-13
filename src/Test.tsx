@@ -80,7 +80,7 @@ function test() {
       setDisable(false);
     }
     return () => {};
-  }, [aquestion]);
+  }, [aquestion, options, type]);
 
   function updateChecked(index: number) {
     const newChecked = [false, false, false, false];
