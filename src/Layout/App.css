@@ -20,12 +20,33 @@ input {
 }
 
 input[type="radio"] {
-  transform: scale(1.5);
+  transform: scale(1.7);
+}
+
+input[type="radio"]:disabled {
+  color: gray;
+}
+
+textarea {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+textarea:disabled {
+  color: gray;
 }
 
 label {
-  font-size: xx-large;
+  font-size: x-large;
   margin-left: 1rem;
+}
+
+td {
+  padding-bottom: 1rem;
+}
+
+.options {
+  text-align: left;
 }
 
 .score {
@@ -82,24 +103,10 @@ label {
   backdrop-filter: blur(3px);
 }
 
-.mainAnsText {
-  width: max-content;
-  width: 3rem;
-}
-
-.mainAnsRadio {
-  width: auto;
-  height: auto;
-}
-
 .hide {
   display: none;
 }
 
 .mainDisplay {
   display: block;
-}
-
-.show {
-  display: inline-block;
 }

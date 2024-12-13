@@ -3,11 +3,14 @@ import { runThread, question, submit } from "./Class/ai";
 import skills from "./Class/skills";
 import score from "./Class/score";
 import "./Layout/App.css";
+import { Link } from "wouter";
 async function sceneBuild(
   answer: string,
   setAquestion: Function,
   setType: Function,
-  setOptions: Function
+  setOptions: Function,
+  setEstimation: Function,
+  setNotes: Function
 ) {
   let message = "";
   async function process() {
@@ -32,6 +35,8 @@ async function sceneBuild(
       }
       break;
     case "assessment":
+      setEstimation(cur.type.correctedEstimation);
+      setNotes(cur.type.notes);
       break;
     default:
       console.log(cur.type);
@@ -48,10 +53,19 @@ function test() {
   const [mainDisplay, setMainDisplay] = useState("hide");
   const [disable, setDisable] = useState(false);
   const [checked, setChecked] = useState([false, false, false, false]);
+  const [estimation, setEstimation] = useState(0);
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     console.log(answer);
-    sceneBuild(answer, setAquestion, setType, setOptions).then(() => {
+    sceneBuild(
+      answer,
+      setAquestion,
+      setType,
+      setOptions,
+      setEstimation,
+      setNotes
+    ).then(() => {
       if (!type) {
         setChecked([false, false, false, false]);
       }
@@ -62,6 +76,7 @@ function test() {
   useEffect(() => {
     if (aquestion !== "") {
       setMainDisplay("mainDisplay");
+      (document.getElementById("textAns") as HTMLInputElement).value = "";
       setDisable(false);
     }
     return () => {};
@@ -75,130 +90,146 @@ function test() {
 
   return (
     <div>
-      <h2 className={mainDisplay}>{aquestion}</h2>
-      <br></br>
-      <div className="score">
-        <div>
-          <input
-            type={type ? "text" : "radio"}
-            id="answer"
-            className={
-              (type ? "mainAnsText" : "mainAnsRadio") +
-              " " +
-              (mainDisplay === "hide" ? "hide" : type ? "hide" : "show")
-            }
-            checked={checked[0]}
-            onChange={() => {
-              updateChecked(0);
-            }}
-            name="answer"></input>
-          <label
-            id="label0"
-            htmlFor="answer"
-            className={
-              mainDisplay === "hide" ? "hide" : type ? "hide" : "show"
-            }>
-            {options[0]}
-          </label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="answer1"
-            className={mainDisplay === "hide" ? "hide" : type ? "hide" : "show"}
-            checked={checked[1]}
-            onChange={() => {
-              updateChecked(1);
-            }}
-            name="answer"></input>
-          <label
-            id="label1"
-            htmlFor="answer1"
-            className={
-              mainDisplay === "hide" ? "hide" : type ? "hide" : "show"
-            }>
-            {options[1]}
-          </label>
-        </div>
-      </div>
-      <br></br>
-      <div className="score">
-        <div>
-          <input
-            type="radio"
-            id="answer2"
-            className={mainDisplay === "hide" ? "hide" : type ? "hide" : "show"}
-            checked={checked[2]}
-            onChange={() => {
-              updateChecked(2);
-            }}
-            name="answer"></input>
-          <label
-            id="label2"
-            htmlFor="answer2"
-            className={
-              mainDisplay === "hide" ? "hide" : type ? "hide" : "show"
-            }>
-            {options[2]}
-          </label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="answer3"
-            className={mainDisplay === "hide" ? "hide" : type ? "hide" : "show"}
-            checked={checked[3]}
-            onChange={() => {
-              updateChecked(3);
-            }}
-            name="answer"></input>
-          <label
-            id="label3"
-            htmlFor="answer3"
-            className={
-              mainDisplay === "hide" ? "hide" : type ? "hide" : "show"
-            }>
-            {options[3]}
-          </label>
-        </div>
-      </div>
-      <br></br>
-      <div className={mainDisplay} style={{ textAlign: "center" }}>
-        <button
-          id="button"
-          className="submit"
-          disabled={disable}
-          onClick={async () => {
-            let value = "";
-            switch (type) {
-              case true:
-                value = (document.getElementById("answer") as HTMLInputElement)
-                  .value;
-                break;
-              case false:
-                let i = 0;
-                for (; i < 4; i++) {
-                  if (checked[i]) {
-                    value = options[i];
-                    break;
-                  }
-                }
-                if (i === 4) {
-                  value = "";
-                }
-                break;
-            }
-            setDisable(true);
-            setAnswer(value);
-          }}>
-          Submit
-        </button>
-      </div>
-      <h1
-        className="popup"
-        style={{ display: mainDisplay == "hide" ? "flex" : "none" }}>
+      <h1 className={mainDisplay == "hide" ? "mainDisplay" : "hide"}>
         Loading...
       </h1>
+      <div className={notes == "" ? mainDisplay : "hide"}>
+        <h2>{aquestion}</h2>
+        <br></br>
+        <div id="answers">
+          <div id="radioAns" className={type ? "hide" : "mainDisplay"}>
+            <table style={{ maxWidth: "100%", margin: "auto" }}>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="radio"
+                      id="answer0"
+                      checked={checked[0]}
+                      disabled={disable}
+                      onChange={() => {
+                        updateChecked(0);
+                      }}
+                      name="answer"></input>
+                  </td>
+                  <td className="options">
+                    <label id="label0" htmlFor="answer0">
+                      {options[0]}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      type="radio"
+                      id="answer1"
+                      checked={checked[1]}
+                      disabled={disable}
+                      onChange={() => {
+                        updateChecked(1);
+                      }}
+                      name="answer"></input>
+                  </td>
+                  <td className="options">
+                    <label id="label1" htmlFor="answer1">
+                      {options[1]}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      type="radio"
+                      id="answer2"
+                      checked={checked[2]}
+                      disabled={disable}
+                      onChange={() => {
+                        updateChecked(2);
+                      }}
+                      name="answer"></input>
+                  </td>
+                  <td className="options">
+                    <label id="label2" htmlFor="answer2">
+                      {options[2]}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      type="radio"
+                      id="answer3"
+                      checked={checked[3]}
+                      disabled={disable}
+                      onChange={() => {
+                        updateChecked(3);
+                      }}
+                      name="answer"></input>
+                  </td>
+                  <td className="options">
+                    <label id="label3" htmlFor="answer3">
+                      {options[3]}
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <textarea
+            id="textAns"
+            className={type ? "mainDisplay" : "hide"}
+            rows={8}
+            autoFocus={true}
+            disabled={disable}
+            style={{ resize: "none", width: "100%", margin: "auto" }}
+            placeholder="Type your answer here"></textarea>
+        </div>
+        <br></br>
+        <div style={{ textAlign: "center" }}>
+          <button
+            id="button"
+            className="submit"
+            disabled={disable}
+            onClick={async () => {
+              let value = "";
+              switch (type) {
+                case true:
+                  value = (
+                    document.getElementById("textAns") as HTMLInputElement
+                  ).value;
+
+                  break;
+                case false:
+                  let i = 0;
+                  for (; i < 4; i++) {
+                    if (checked[i]) {
+                      value = options[i];
+                      break;
+                    }
+                  }
+                  if (i === 4) {
+                    value = "";
+                  }
+                  break;
+              }
+              setDisable(true);
+              setAnswer(value);
+            }}>
+            Submit
+          </button>
+        </div>
+      </div>
+      <div className={notes == "" ? "hide" : "mainDisplay"}>
+        <h1>Estimation: {estimation}</h1>
+        <br></br>
+        <p style={{ fontSize: "20px" }}>
+          <strong>Notes:</strong> {notes}
+        </p>
+        <br></br>
+        <Link to="/home">
+          <button className="submit">Home</button>
+        </Link>
+      </div>
     </div>
   );
 }
