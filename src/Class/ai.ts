@@ -13,8 +13,8 @@ Also check if the learner possesses higher (highest 9.0) or lower (lowest 1.0) l
 Before giving any question, generate some thoughts on what needs to be asked.
 After 10 questions and answers, generate an assessment on the corrected estimation of the score and some notes about weaknesses and strengths of the learner.
 
-Ask questions that can be answered using a word or 1-2 sentences.
-There will be 7 multiple-choice questions and 3 open-ended questions.
+Ask questions that can be answered using a word or 1-2 sentences, and limit the answer to be within this range.
+There will be 7 multiple-choice questions and 3 open-ended questions. 
 The multiple-choice questions should have 4 options but only 1 answer.
 
 Make sure to include questions that can test language understanding of the learner, as well as questions on ideation and complicated usage of the language.`;
