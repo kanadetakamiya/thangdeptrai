@@ -109,7 +109,7 @@ export function onboard() {
                 verticalAlign: "middle",
                 margin: "1.5rem",
               }}>
-              {(Math.round(lisScore * 10) / 10).toFixed(1)}
+              {lisScore.toFixed(1)}
             </span>
             <button
               style={{ verticalAlign: "middle" }}
@@ -141,7 +141,7 @@ export function onboard() {
                 verticalAlign: "middle",
                 margin: "1.5rem",
               }}>
-              {(Math.round(readScore * 10) / 10).toFixed(1)}
+              {readScore.toFixed(1)}
             </span>
             <button
               style={{ verticalAlign: "middle" }}
@@ -175,7 +175,7 @@ export function onboard() {
                 verticalAlign: "middle",
                 margin: "1.5rem",
               }}>
-              {(Math.round(writeScore * 10) / 10).toFixed(1)}
+              {writeScore.toFixed(1)}
             </span>
             <button
               style={{ verticalAlign: "middle" }}
@@ -207,7 +207,7 @@ export function onboard() {
                 verticalAlign: "middle",
                 margin: "1.5rem",
               }}>
-              {(Math.round(speakScore * 10) / 10).toFixed(1)}
+              {speakScore.toFixed(1)}
             </span>
             <button
               style={{ verticalAlign: "middle" }}
