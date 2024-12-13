@@ -6,11 +6,11 @@ import skills from "./Class/skills";
 import "./Layout/App.css";
 
 export function onboard() {
-  const [lisScore, setLisScore] = useState(6.5);
-  const [readScore, setReadScore] = useState(6.5);
-  const [writeScore, setWriteScore] = useState(6.5);
-  const [speakScore, setSpeakScore] = useState(6.5);
-  const [totalScore, setTotalScore] = useState(6.5);
+  const [lisScore, setLisScore] = useState(5.0);
+  const [readScore, setReadScore] = useState(5.0);
+  const [writeScore, setWriteScore] = useState(5.0);
+  const [speakScore, setSpeakScore] = useState(5.0);
+  const [totalScore, setTotalScore] = useState(5.0);
   enum signs {
     PLUS,
     MINUS,

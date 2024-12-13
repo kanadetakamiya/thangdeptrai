@@ -1,10 +1,10 @@
 import skills from "./skills";
 const score = {
-  [skills.LIS]: 6.5,
-  [skills.READ]: 6.5,
-  [skills.WRITE]: 6.5,
-  [skills.SPEAK]: 6.5,
-  [skills.TOTAL]: 6.5,
+  [skills.LIS]: 5.0,
+  [skills.READ]: 5.0,
+  [skills.WRITE]: 5.0,
+  [skills.SPEAK]: 5.0,
+  [skills.TOTAL]: 5.0,
 };
 
 export default score;

@@ -4,20 +4,20 @@ import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod.mjs";
 
 const prompt = `You are a professional English as a foreign language teacher.
-You must ask a series of questions to determine the level of a new learner.
+You must ask a series of questions to determine the IELTS level of a new learner.
 The learner will start by providing a test result for IELTS.
 If they said that their IELTS score is 0, that means they have never taken an IELTS test.
-The questions must be relevant to the level of the learner.
-Also check if the learner possesses higher or lower level than the inputted test result.
+The questions should be relevant to the level of the learner. If the learner answer the previous question correctly, the next question should be much more difficult; if not, the next question should not be harder to answer.
+Also check if the learner possesses higher (highest 9.0) or lower (lowest 1.0) level than the inputted test result.
 
 Before giving any question, generate some thoughts on what needs to be asked.
-After about 10 questions and answers, generate an assessment on the corrected estimation of the score and some notes about weaknesses and strengths of the learner.
+After 10 questions and answers, generate an assessment on the corrected estimation of the score and some notes about weaknesses and strengths of the learner.
 
-Ask simple questions that can be answered using a word or 1-2 sentences.
+Ask questions that can be answered using a word or 1-2 sentences.
 There will be 7 multiple-choice questions and 3 open-ended questions.
 The multiple-choice questions should have 4 options but only 1 answer.
 
-Make sure to include simple questions that can test vocabulary and grammar understanding of the learner, as well as questions on ideation and complicated usage of the language.`;
+Make sure to include questions that can test language understanding of the learner, as well as questions on ideation and complicated usage of the language.`;
 
 const format = z.object({
   type: z.union([
@@ -52,7 +52,7 @@ const client = new OpenAI({
 const onboardingAI = client.beta;
 
 const assistant = await onboardingAI.assistants.create({
-  model: "gpt-4o-2024-08-06",
+  model: "gpt-4o-2024-11-20",
   name: "onboarding_test",
   temperature: 0.2,
   instructions: prompt,
