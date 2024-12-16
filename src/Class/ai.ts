@@ -55,7 +55,6 @@ const onboardingAI = client.beta;
 const assistant = await onboardingAI.assistants.create({
   model: "gpt-4o-2024-11-20",
   name: "onboarding_test",
-  temperature: 0.2,
   instructions: prompt,
   response_format: zodResponseFormat(format, "onboarding_test"),
 });
@@ -63,17 +62,13 @@ const assistant = await onboardingAI.assistants.create({
 const thread = await onboardingAI.threads.create({});
 
 export async function runThread() {
-  let run = await onboardingAI.threads.runs.createAndPoll(thread.id, {
+  await onboardingAI.threads.runs.createAndPoll(thread.id, {
     assistant_id: assistant.id,
   });
-  while (run.status !== "completed") {
-    continue;
-  }
-  return run;
 }
 
 export async function submit(content: string) {
-  return await onboardingAI.threads.messages.create(thread.id, {
+  await onboardingAI.threads.messages.create(thread.id, {
     role: "user",
     content: content,
   });

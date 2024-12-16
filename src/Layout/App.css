@@ -63,6 +63,7 @@ td {
 
 .slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 40%;
   height: 10px;
   border-radius: 10px;
@@ -100,6 +101,7 @@ td {
   display: none;
   align-items: center;
   justify-content: center;
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
 
