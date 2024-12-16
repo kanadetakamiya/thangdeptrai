@@ -62,6 +62,7 @@ td {
 }
 
 .slider {
+  appearance: none;
   -webkit-appearance: none;
   width: 40%;
   height: 10px;
