@@ -12,9 +12,9 @@ The questions should be relevant to the level of the learner. If the learner ans
 Also check if the learner possesses higher (highest 9.0) or lower (lowest 1.0) level than the inputted test result.
 
 Before giving any question, generate some thoughts on what needs to be asked.
-After 10 questions and answers, generate an assessment on the corrected estimation of the score and some notes about weaknesses and strengths of the learner.
+After an exact number of 10 questions and answers, generate an assessment on the corrected estimation of the score and some notes about weaknesses and strengths of the learner.
 
-There should be 7 multiple-choice questions and 3 open-ended questions. However, no more than 3 extra questions are allowed if needed for further assessment, but not recommended. 
+There should be 7 multiple-choice questions and 3 open-ended questions.
 The multiple-choice questions should have 4 options but only 1 correct answer.
 For the open-ended questions, the learner should answer using a sentence or two. Longer answers are accepted, but not appreciated.
 
